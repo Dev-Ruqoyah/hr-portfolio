@@ -1,0 +1,91 @@
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Sun, Moon, Github, Linkedin, Twitter } from "lucide-react";
+
+const Navbar = () => {
+  // Initialize darkMode based on localStorage, defaulting to light mode
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("theme") === "dark"
+  );
+
+  // Sync darkMode with the document's class and localStorage
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
+
+  return (
+    <nav className="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 shadow-md z-50">
+      <div className="container mx-auto flex justify-between items-center py-4 px-6">
+        {/* Brand Name */}
+        <motion.a
+          href="#"
+          className="text-2xl font-bold text-gray-900 dark:text-white"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+         <i>Hamzat Rukayat</i>
+        </motion.a>
+
+        {/* Navigation Links */}
+        <motion.ul
+          className="hidden md:flex space-x-6 text-gray-700 dark:text-gray-300"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
+          <li>
+            <a href="#about" className="hover:text-blue-500 transition">
+              About
+            </a>
+          </li>
+          <li>
+            <a href="#experience" className="hover:text-blue-500 transition">
+              Experience
+            </a>
+          </li>
+          <li>
+            <a href="#projects" className="hover:text-blue-500 transition">
+              Projects
+            </a>
+          </li>
+        </motion.ul>
+
+        {/* Social Media & Dark Mode Toggle */}
+        <div className="flex items-center space-x-8">
+          {/* Social Icons */}
+          <div className="hidden md:flex space-x-3 text-gray-600 dark:text-gray-300">
+            <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer">
+              <Github className="w-6 h-6 hover:text-blue-500 transition" />
+            </a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+              <Linkedin className="w-6 h-6 hover:text-blue-500 transition" />
+            </a>
+            <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer">
+              <Twitter className="w-6 h-6 hover:text-blue-500 transition" />
+            </a>
+          </div>
+
+          {/* Dark Mode Toggle */}
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="p-2 bg-gray-200 dark:bg-gray-800 rounded-full"
+          >
+            {darkMode ? (
+              <Sun className="w-6 h-6 text-yellow-500" />
+            ) : (
+              <Moon className="w-6 h-6 text-gray-700" />
+            )}
+          </button>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
