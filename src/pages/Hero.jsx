@@ -33,7 +33,7 @@ const Hero = () => {
           >
             Hi, I'm <span className="text-blue-500">Rukayat</span>
           </motion.h1>
-          <p className="text-lg md:text-2xl mb-8 text-gray-300">
+          <p className="text-lg md:text-xl mb-8 text-gray-300">
             Crafting Beautiful and Interactive Web Experiences
           </p>
         </div>
