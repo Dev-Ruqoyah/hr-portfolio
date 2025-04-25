@@ -1,1 +1,59 @@
 @import "tailwindcss";
+/* body {
+    overflow-x: hidden;
+  } */
+  
+  
+  @keyframes gradientBlur {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .animate-gradientBlur {
+    background-size: 200% 200%;
+    animation: gradientBlur 15s ease infinite;
+  }
+  ::-webkit-scrollbar {
+    height: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #4b5563; /* adjust for your theme */
+    border-radius: 8px;
+  }.auto-scroll-iframe {
+    animation: scrollIframe 10s linear infinite alternate;
+  }
+  
+  .group:hover .auto-scroll-iframe {
+    animation-play-state: running;
+  }
+  
+  @keyframes scrollIframe {
+    0% {
+      transform: translate(-20%, 0);
+    }
+    100% {
+      transform: translate(-20%, -15%);
+    }
+  }
+
+  @keyframes shine {
+    0% {
+      left: -75%;
+    }
+    100% {
+      left: 125%;
+    }
+  }
+  
+  .animate-shine {
+    animation: shine 2.5s infinite;
+  }
+  
+  

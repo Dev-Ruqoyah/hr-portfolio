@@ -3,44 +3,70 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
-import project1 from "../assets/project3.png"
-import project2 from "../assets/project1.png"
-import project3 from "../assets/project2.png"
-import project4 from "../assets/project5.png"
-import project5 from "../assets/project4.png"
+import project1 from "../assets/project3.png";
+import project2 from "../assets/project1.png";
+import project3 from "../assets/project2.png";
+import project4 from "../assets/project5.png";
+import project5 from "../assets/project4.png";
+import project6 from "../assets/project6.png";
 
 const projects = [
   {
     title: "RecipeAI",
-    description: "An AI-powered recipe generator that suggests recipes based on user-provided ingredients.",
+    description: "An AI-powered recipe generator...",
     link: "https://hr-recipyai.web.app/",
-    image: project1 ,
+    image: project1,
+    stack: ["React", "Tailwind", "Firebase"],
   },
   {
     title: "FlickFetch Platform",
-    description: "A movie discovery platform built with React, providing links to official movie sites.",
+    description: "A movie discovery platform...",
     link: "https://hr-flickfetch.web.app/",
     image: project2,
+    stack: ["React", "TMDB API", "CSS"],
   },
   {
     title: "Ebook Site",
-    description: "A simple, sign-up-free ebook browsing and reading platform.",
+    description: "A simple ebook browsing platform...",
     link: "https://hr-shelfy.web.app/",
     image: project3,
+    stack: ["HTML", "CSS", "JavaScript"],
   },
   {
     title: "Shoe Site",
-    description: "A stylish and responsive e-commerce shoe site built with HTML, CSS, JS, and Bootstrap.",
+    description: "A stylish e-commerce shoe site...",
     link: "https://hrshoewebsite.vercel.app/",
     image: project4,
+    stack: ["Bootstrap", "JavaScript"],
   },
   {
     title: "Question App",
-    description: "A web app that allows users to create and manage custom questions.",
+    description: "A custom quiz management app...",
     link: "https://hr-quizapp.web.app/",
     image: project5,
+    stack: ["React", "Context API"],
+  },
+  {
+    title: "Dictionary App",
+    description: "A web-based dictionary app...",
+    link: "https://hr-dictionaryapp.web.app/",
+    image: project6,
+    stack: ["React", "API", "Tailwind"],
   },
 ];
+
+const stackColors = {
+  React: "bg-blue-600",
+  Tailwind: "bg-cyan-500",
+  Firebase: "bg-yellow-500 text-black",
+  "TMDB API": "bg-green-500",
+  CSS: "bg-indigo-500",
+  HTML: "bg-orange-500",
+  JavaScript: "bg-yellow-300 text-black",
+  Bootstrap: "bg-purple-600",
+  "Context API": "bg-pink-500",
+  API: "bg-teal-500",
+};
 
 export default function HorizontalProjects() {
   const containerRef = useRef(null);
@@ -88,7 +114,7 @@ export default function HorizontalProjects() {
     <section
       id="projects"
       ref={containerRef}
-      className="relative py-20 bg-gray-900  flex items-center overflow-hidden"
+      className="relative py-20 w-screen bg-gray-900 h-[100vh]  flex items-center overflow-hidden"
     >
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold text-white text-center mb-16">
@@ -96,27 +122,55 @@ export default function HorizontalProjects() {
         </h2>
 
         <div className="relative w-full overflow-hidden">
-          <div
-            ref={projectsRef}
-            className="flex space-x-8 w-max"
-          >
+          <div ref={projectsRef} className="flex space-x-8 w-max">
             {projects.map((project, index) => (
               <a
                 key={index}
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-[300px] md:w-[400px] bg-white/10 backdrop-blur-lg p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl"
+                className="group relative w-[300px] md:w-[380px] bg-gradient-to-tr from-[#1f2937] to-[#111827] rounded-xl overflow-hidden shadow-2xl transform transition-transform hover:scale-105 hover:shadow-3xl"
               >
-                <div className="overflow-hidden rounded-xl">
+                {/* Project Image */}
+                <div className="h-[180px] w-full overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-48 object-cover rounded-xl"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
-                <h3 className="mt-4 text-2xl font-semibold text-white">{project.title}</h3>
-                <p className="mt-2 text-gray-300 text-sm">{project.description}</p>
+
+                {/* Content */}
+                <div className="p-5 text-white">
+                  <h3 className="text-2xl font-semibold">{project.title}</h3>
+                  <p className="text-sm text-gray-300 mt-2">
+                    {project.description}
+                  </p>
+                  {/* Stack Badges */}
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {project.stack.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className={`px-3 py-1 text-xs font-medium rounded-full ${
+                          stackColors[tech] || "bg-white/10 text-gray-200"
+                        }`}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-4">
+                    <span className="inline-block text-sm px-3 py-1 bg-white/10 rounded-full text-gray-200 group-hover:bg-white/20 transition">
+                      View Project →
+                    </span>
+                  </div>
+                </div>
+
+                {/* Optional shine effect */}
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="shine absolute top-0 left-[-75%] w-[50%] h-full bg-gradient-to-r from-transparent via-white/20 to-transparent rotate-12 animate-shine" />
+                </div>
               </a>
             ))}
           </div>

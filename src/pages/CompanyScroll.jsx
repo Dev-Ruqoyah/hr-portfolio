@@ -30,21 +30,21 @@ const CompanyWorkScroll = () => {
   };
 
   return (
-    <div id="experience" className="min-h-screen flex flex-col items-center justify-center bg-gray-900  px-5">
+    <div id="experience" className="min-h-screen flex flex-col items-center justify-center bg-gray-900 p-6">
       <h1 className="text-4xl font-bold text-blue-600 mb-6">Work Experience</h1>
-      <div className="flex flex-col md:flex-row w-full max-w-5xl gap-8">
+      <div className="flex flex-col md:flex-row w-full max-w-6xl gap-10">
         {/* Sidebar with Company Names */}
-        <div className="w-full md:w-1/3 bg-gray-700 shadow-lg rounded-lg p-6 flex flex-col gap-4">
+        <div className="w-full md:w-1/4 bg-gray-800 rounded-lg shadow-lg p-6 flex flex-col gap-6">
           {Object.keys(workExperience).map((company) => (
             <motion.button
               key={company}
               onClick={() => setSelectedCompany(company)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`w-full py-3 text-lg font-semibold rounded-lg transition-all duration-300 ${
+              className={`w-full py-3 text-lg font-semibold rounded-lg transition-all duration-300 ease-in-out ${
                 selectedCompany === company
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-200 text-blue-500"
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-700 text-blue-500 hover:bg-blue-500 hover:text-white"
               }`}
             >
               {company}
@@ -58,14 +58,14 @@ const CompanyWorkScroll = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full md:w-2/3 bg-gray-800 shadow-lg rounded-lg p-8 flex flex-col gap-4"
+          className="w-full md:w-3/4 bg-gray-800 rounded-lg shadow-lg p-8 flex flex-col gap-6"
         >
-          <h2 className="text-2xl font-bold text-blue-600">{selectedCompany}</h2>
-          <h3 className="text-lg font-medium text-gray-100">{workExperience[selectedCompany].role}</h3>
-          <p className="text-sm text-gray-100">{workExperience[selectedCompany].dates}</p>
-          <ul className="list-disc space-y-2 text-gray-100 pl-5">
+          <h2 className="text-3xl font-semibold text-blue-600">{selectedCompany}</h2>
+          <h3 className="text-xl font-medium text-gray-300">{workExperience[selectedCompany].role}</h3>
+          <p className="text-sm text-gray-500">{workExperience[selectedCompany].dates}</p>
+          <ul className="list-disc space-y-4 text-gray-300 pl-6">
             {workExperience[selectedCompany].details.map((detail, index) => (
-              <motion.li key={index} whileHover={{ x: 5 }}>
+              <motion.li key={index} whileHover={{ x: 5 }} className="hover:text-blue-500">
                 {detail}
               </motion.li>
             ))}

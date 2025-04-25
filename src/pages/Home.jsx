@@ -1,26 +1,27 @@
 import ParallaxSections from "./parallaxEffect";
 import CardStack from "./parallaxEffect";
 import Hero from "./Hero";
-import Projects from "./projectCards";
-import HorizontalScroll from "./HOrizontai";
-import StackingCards from "./projectCards";
 import CompanyWorkScroll from "./CompanyScroll";
 import Navbar from "../components/NavBar";
 import About from "./About";
 import Footer from "../components/Footer";
 import ProjectsSection from "./projectCards";
 import StackedProjects from "./projectCards";
+import ContactSection from "./Contact";
+import ResumeSection from "./ResumeSection";
+
 
 const Home = () => {
   return (
     <>
       <Navbar />
-      <div className="relative">
+      <div className="relative overflow-x-hidden">
         <Hero/>
-        <About/>
-        {/* <StackingCards /> */}
+       <About/>
         <StackedProjects/>
-        <CompanyWorkScroll/>
+         <CompanyWorkScroll/>
+         <ResumeSection/>
+         {/* <ContactSection/> */}
         <Footer/>
       </div>
     </>
