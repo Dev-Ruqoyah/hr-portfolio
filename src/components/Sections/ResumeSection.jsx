@@ -1,25 +1,22 @@
 import { motion } from "framer-motion";
 import { Download } from "lucide-react";
+import Header from "../Header";
+import { Element } from "react-scroll";
 
 const ResumeSection = () => {
   return (
+    <Element name="resume">
+
     <section
       id="resume"
       className="py-20 bg-gray-900 text-center relative overflow-hidden"
     >
       {/* Gradient Glow Effects */}
-      <div className="absolute -top-20 -left-20 w-72 h-72 bg-blue-600 opacity-20 rounded-full blur-3xl z-0" />
-      <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-pink-600 opacity-20 rounded-full blur-3xl z-0" />
+      <div className="absolute -top-20 -left-20 w-72 h-72 bg-blue-950 opacity-20 rounded-full blur-3xl z-0" />
+      <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-blue-600 opacity-20 rounded-full blur-3xl z-0" />
 
       <div className="container relative z-10 mx-auto px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-white mb-6"
-        >
-          Download My Resume
-        </motion.h2>
+        <Header header={"Download My Resume"}/>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -43,7 +40,7 @@ const ResumeSection = () => {
           download="Hamzat-Rukayat-Resume"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg hover:bg-blue-500 transition-all duration-300"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-full hover:bg-blue-500 transition-all duration-300"
         >
           <Download size={20} />
           Download Resume
@@ -63,6 +60,7 @@ const ResumeSection = () => {
         </p>
       </div>
     </section>
+    </Element>
   );
 };
 

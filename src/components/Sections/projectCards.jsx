@@ -3,12 +3,15 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
-import project1 from "../assets/project3.png";
-import project2 from "../assets/project1.png";
-import project3 from "../assets/project2.png";
-import project4 from "../assets/project5.png";
-import project5 from "../assets/project4.png";
-import project6 from "../assets/project6.png";
+import project1 from "../../assets/project3.png";
+import project2 from "../../assets/project1.png";
+import project3 from "../../assets/project2.png";
+import project4 from "../../assets/project5.png";
+import project6 from "../../assets/project6.png";
+import project5 from "../../assets/project4.png";
+import project7 from "../../assets/project7.png";
+import Header from "../Header";
+import { Element } from "react-scroll";
 
 const projects = [
   {
@@ -17,6 +20,13 @@ const projects = [
     link: "https://hr-recipyai.web.app/",
     image: project1,
     stack: ["React", "Tailwind", "Firebase"],
+  },
+  {
+    title: "Mentors Dashboard",
+    description: "A Dashboard Interface...",
+    link: "https://hr-flickfetch.web.app/",
+    image: project7,
+    stack: ["Nextjs", "Tailwind","Framer Motion"],
   },
   {
     title: "FlickFetch Platform",
@@ -30,7 +40,7 @@ const projects = [
     description: "A simple ebook browsing platform...",
     link: "https://hr-shelfy.web.app/",
     image: project3,
-    stack: ["HTML", "CSS", "JavaScript"],
+    stack: ["React", "Tailwind", "Google API"],
   },
   {
     title: "Shoe Site",
@@ -57,6 +67,7 @@ const projects = [
 
 const stackColors = {
   React: "bg-blue-600",
+  Nextjs:"bg-black/60 text-white",
   Tailwind: "bg-cyan-500",
   Firebase: "bg-yellow-500 text-black",
   "TMDB API": "bg-green-500",
@@ -66,6 +77,8 @@ const stackColors = {
   Bootstrap: "bg-purple-600",
   "Context API": "bg-pink-500",
   API: "bg-teal-500",
+  "Framer Motion" : "bg-red-500",
+  "Google API" : "bg-blue-500"
 };
 
 export default function HorizontalProjects() {
@@ -111,15 +124,16 @@ export default function HorizontalProjects() {
   }, []);
 
   return (
+    <Element name="peoject">
+
+    
     <section
       id="projects"
       ref={containerRef}
       className="relative py-20 w-screen bg-gray-900 h-[100vh]  flex items-center overflow-hidden"
     >
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-white text-center mb-16">
-          My Projects
-        </h2>
+        <Header header={"My Projects"} />
 
         <div className="relative w-full overflow-hidden">
           <div ref={projectsRef} className="flex space-x-8 w-max">
@@ -177,5 +191,6 @@ export default function HorizontalProjects() {
         </div>
       </div>
     </section>
+    </Element>
   );
 }

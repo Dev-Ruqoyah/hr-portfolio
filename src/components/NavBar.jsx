@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Sun, Moon, Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Link } from "react-scroll";
 
 const Navbar = () => {
   // Initialize darkMode based on localStorage, defaulting to light mode
@@ -41,19 +42,19 @@ const Navbar = () => {
             transition={{ delay: 0.2 }}
           >
             <li>
-              <a href="#about" className="hover:text-blue-500 transition">
+              <Link to="about" smooth={true} duration={500} className="hover:text-blue-500 transition cursor-pointer">
                 About
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#projects" className="hover:text-blue-500 transition">
+              <Link to="projects" smooth={true} duration={500} className="hover:text-blue-500 transition cursor-pointer">
                 Projects
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#experience" className="hover:text-blue-500 transition">
+              <Link to="experience" smooth={true} duration={500} className="hover:text-blue-500 transition cursor-pointer">
                 Experience
-              </a>
+              </Link>
             </li>
           </motion.ul>
 
@@ -87,7 +88,7 @@ const Navbar = () => {
             <button className="p-2 bg-gray-200 dark:bg-gray-800 rounded-full">
               <a href="mailto:hamzatrukayat2822@gmail.com">
                 {" "}
-                <Mail className="w-6 h-6 text-yellow-500" />
+                <Mail className="w-6 h-6 text-blue-500" />
               </a>
             </button>
           </div>

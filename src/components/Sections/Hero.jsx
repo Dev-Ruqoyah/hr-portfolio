@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import Lottie from "lottie-react";
-import coderAnimation from "../assets/cod.json"; // Path to your Lottie file
+import coderAnimation from "../../assets/cod.json"; // Path to your Lottie file
+import { Link } from "react-scroll";
 
 const Hero = () => {
   const heroRef = useRef(null);
@@ -99,18 +100,20 @@ const Hero = () => {
 
         {/* Subtitle */}
         <motion.p
-          className="text-lg md:text-xl text-gray-300 mb-6 max-w-xl"
+          className="text-lg md:text-xl text-gray-300 text-left md:text-center mb-6 max-w-xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 1 }}
         >
-          A frontend developer turning ideas into elegant and powerful digital experiences. 
-          I design with intention, code with precision, and build with purpose.
+          A frontend developer turning ideas into elegant and powerful digital
+          experiences. I design with intention, code with precision, and build
+          with purpose.
         </motion.p>
 
         {/* CTA */}
+        <Link to="resume" smooth={true} duration={600}>
         <motion.a
-          href="#contact"
+          href="#resume"
           className="inline-block mt-4 px-6 py-3 bg-blue-500 hover:bg-blue-600 transition-colors text-white font-semibold rounded-full shadow-lg"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -118,6 +121,7 @@ const Hero = () => {
         >
           Let's Work Together
         </motion.a>
+        </Link>
       </div>
     </section>
   );

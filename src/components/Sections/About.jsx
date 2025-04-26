@@ -1,5 +1,7 @@
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
+import Header from "../Header";
+import { Element } from "react-scroll";
 
 const techStack = [
   {
@@ -48,21 +50,18 @@ const About = () => {
   }, [controls]);
 
   return (
+    <Element name="about">
+
+   
     <section
       id="about"
+      name="about"
       className="about py-20 bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white"
     >
       <div className="grid md:grid-cols-2 px-8">
         {/* Left: Text Content */}
         <div className="container mx-auto px-6">
-          <motion.h3
-            className="text-2xl md:text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-500 mb-10"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          >
-            About Me
-          </motion.h3>
+          <Header header={"About me"} />
 
           <motion.p
             className="text-md text-gray-300 mb-12 leading-relaxed"
@@ -106,10 +105,7 @@ const About = () => {
           }}
         >
           {/* For small screens (scroll) */}
-          <motion.div
-            className="flex gap-6 w-max sm:hidden"
-            animate={controls}
-          >
+          <motion.div className="flex gap-6 w-max sm:hidden" animate={controls}>
             {[...techStack, ...techStack].map((tech, i) => (
               <motion.div
                 key={i}
@@ -166,6 +162,7 @@ const About = () => {
         </motion.div>
       </div>
     </section>
+    </Element>
   );
 };
 

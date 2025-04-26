@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Header from "../Header";
+import { Element } from "react-scroll";
 
 const CompanyWorkScroll = () => {
   const [selectedCompany, setSelectedCompany] = useState("Sunmence");
@@ -30,8 +32,10 @@ const CompanyWorkScroll = () => {
   };
 
   return (
+    <Element name="experience">
+
     <div id="experience" className="min-h-screen flex flex-col items-center justify-center bg-gray-900 p-6">
-      <h1 className="text-4xl font-bold text-blue-600 mb-6">Work Experience</h1>
+        <Header header={"Work Experience"}/>
       <div className="flex flex-col md:flex-row w-full max-w-6xl gap-10">
         {/* Sidebar with Company Names */}
         <div className="w-full md:w-1/4 bg-gray-800 rounded-lg shadow-lg p-6 flex flex-col gap-6">
@@ -73,6 +77,7 @@ const CompanyWorkScroll = () => {
         </motion.div>
       </div>
     </div>
+    </Element>
   );
 };
 
